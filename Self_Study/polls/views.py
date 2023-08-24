@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render,get_object_or_404
 from django.urls import reverse
-
+from django.utils import timezone
 from .models import Question,Choice
 
 
@@ -14,7 +14,7 @@ def index(request):
     #            3:context 사전형 객체를 세번째 선택적(optional) 인수로 받습니다.
     return render(request, "polls/index.html", context)
 
-
+   
 def detail(request, question_id):
     # (1) 방식
     # -> Question does not exist!
