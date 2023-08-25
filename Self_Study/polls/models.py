@@ -2,6 +2,7 @@ import datetime
 
 from django.db import models
 from django.utils import timezone
+from django.contrib import admin
 
 # Create your models here.
 
@@ -13,6 +14,12 @@ class Question(models.Model):
 
   def __str__(self) -> str:
     return self.question_text
+
+  @admin.display(
+    boolean = True,
+    ordering = "pub_date",
+    description = "published recently?",
+  )
 
   def was_published_recently(self):
     #  어제 이후로 발행된 시간 반환 = 현재시각 - 하루전날의 시간 
